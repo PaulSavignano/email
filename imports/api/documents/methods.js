@@ -10,6 +10,7 @@ export const insertDocument = new ValidatedMethod({
   }).validator(),
   run(document) {
     Documents.insert(document);
+
   },
 });
 

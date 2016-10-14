@@ -10,21 +10,25 @@ import { NotFound } from '../../ui/pages/not-found';
 import { RecoverPassword } from '../../ui/pages/recover-password';
 import { ResetPassword } from '../../ui/pages/reset-password';
 import { Signup } from '../../ui/pages/signup';
+import { EmailsPage } from '../../ui/pages/emails-page'
+import { EmailPage } from '../../ui/pages/email-page'
 
 const requireAuth = (nextState, replace) => {
   if (!Meteor.loggingIn() && !Meteor.userId()) {
     replace({
       pathname: '/login',
       state: { nextPathname: nextState.location.pathname },
-    });
+    })
   }
-};
+}
 
 Meteor.startup(() => {
   render(
     <Router history={ browserHistory }>
       <Route path="/" component={ App }>
         <IndexRoute name="index" component={ Index } onEnter={ requireAuth } />
+        <Route name="emails" path="/emails" component={ EmailsPage } onEnter={ requireAuth } />
+        <Route name="email" path="/emails/:emailId" component={ EmailPage } onEnter={ requireAuth } />
         <Route name="documents" path="/documents" component={ Documents } onEnter={ requireAuth } />
         <Route name="login" path="/login" component={ Login } />
         <Route name="recover-password" path="/recover-password" component={ RecoverPassword } />

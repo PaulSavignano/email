@@ -1,0 +1,22 @@
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-content: center;
+  align-items: top;
+}
+.flex-item {
+  flex: 1 1 auto;
+  align-self: auto;
+  min-height: auto;
+}
+.email-controls {
+  align-items: center;
+}
+.button-group {
+  margin-top: 10px;
+}
+.button-group > button:nth-child(2) {
+  margin-left: 5px;
+  margin-right: 5px;
+}
